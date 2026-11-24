@@ -4,6 +4,7 @@ import { ROUTES } from "./paths"
 import Layout from "@/layouts/Layout"
 import Home from "@/pages/Home/Home"
 import Projects from "@/pages/Projects/Projects"
+import About from "@/pages/About/About"
 import Careers from "@/pages/Careers/Careers"
 import Contact from "@/pages/Contact/Contact"
 import ProjectDetail from "@/pages/ProjectDetail/ProjectDetail"
@@ -22,6 +23,7 @@ const MainRouter: React.FC = () => {
                 <Route path={ROUTES.HOMEPAGE} element={<Home />} />
                 <Route path={ROUTES.PROJECTS} element={<Projects />} />
                 <Route path={`${ROUTES.PROJECTS}/:id`} element={<ProjectDetail />} />
+                <Route path={ROUTES.ABOUT} element={<About />} />
                 <Route path={ROUTES.CAREER} element={<Careers />} />
                 <Route path={ROUTES.CONTACT} element={<Contact />} />
                 <Route path={ROUTES.TERMS} element={<TermsAndCondition />} />
