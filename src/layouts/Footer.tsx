@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CONFIG } from "../app/config";
+import { CONFIG } from "@/app/config/config";
 
 const Footer: React.FC = () => {
     return (
@@ -42,9 +42,9 @@ const Footer: React.FC = () => {
                         © {new Date().getFullYear()} {CONFIG.legalName}
                     </span>
                     <nav aria-label="Legal">
-                        <Link to="/legal#privacy">Privacy</Link>
-                        <Link to="/legal#terms">Terms</Link>
-                        <Link to="/legal#disclaimer">Disclaimer</Link>
+                        <Link to="/privacy">Privacy</Link>
+                        <Link to="/terms">Terms</Link>
+                        <Link to="/disclaimer">Disclaimer</Link>
                     </nav>
                 </div>
             </div>

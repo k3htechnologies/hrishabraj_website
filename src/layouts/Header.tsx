@@ -47,7 +47,7 @@ const Header: React.FC = () => {
     return (
         <header className={`site-header${scrolled ? " scrolled" : ""}`}>
             <div className="container header-inner">
-                <Link className="brand brand-word" to="/" aria-label="H. Rishabraj home">
+                <Link className="brand brand-word" to="/home" aria-label="H. Rishabraj home">
                     H.RISHABRAJ
                 </Link>
                 <nav className={`nav${menuOpen ? " open" : ""}`} id="site-nav" aria-label="Primary">
