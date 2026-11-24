@@ -1,0 +1,18 @@
+export const ROUTES = {
+  HOME: '/',
+  HOMEPAGE: 'home',
+  ABOUT: 'about',
+  LIFESTYLE: 'lifestyle',
+  MEDIA: 'media',
+  PROJECTS: 'projects',
+  BLOGS: 'blogs',
+  CAREER: 'careers',
+  JOB_SEARCH: 'jobSearch',
+  LOGIN: 'login',
+  TEAMS: 'teams',
+  CONTACT: 'contact',
+  PRIVACY: 'privacy',
+  TERMS: 'terms',
+  DISCLAIMER: 'disclaimer',
+
+};

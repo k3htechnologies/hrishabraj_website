@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="60" viewBox="0 0 260 60" role="img" aria-label="H. Rishabraj">
+  <!-- PLACEHOLDER: replace this file with the original logo (Hrishabraj-logo-dark.svg) from the brand kit. Brand blue is #00A3DF. -->
+  <g fill="#00A3DF">
+    <rect x="2" y="2" width="20" height="20"/>
+    <rect x="26" y="2" width="20" height="20"/>
+    <rect x="2" y="26" width="20" height="20"/>
+    <rect x="26" y="26" width="20" height="20"/>
+  </g>
+  <text x="58" y="38" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0E2233">H. RISHABRAJ</text>
+</svg>

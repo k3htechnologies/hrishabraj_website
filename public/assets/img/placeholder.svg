@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Project image placeholder">
+  <!-- PLACEHOLDER: replace with a 1600x1200 project photo (JPG/WebP) and update image paths in data.js -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BDE8F7"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <g fill="#9FD8EE">
+    <rect x="60" y="300" width="90" height="300"/>
+    <rect x="170" y="230" width="80" height="370"/>
+    <rect x="270" y="170" width="100" height="430"/>
+    <rect x="390" y="260" width="85" height="340"/>
+    <rect x="495" y="200" width="95" height="400"/>
+    <rect x="610" y="280" width="90" height="320"/>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif" font-size="20" fill="#0081B3">Image coming soon</text>
+</svg>
