@@ -1636,7 +1636,7 @@ p {
   margin: 0;
   font-size: .95rem;
   font-weight: 600;
-  color: var(--blue-dark) !important;
+  color: var(--blue) !important;
   letter-spacing: 0.02em;
 }
 
@@ -1824,24 +1824,6 @@ p {
   align-items: center;
   gap: .6rem;
   color: var(--ink);
-}
-
-.sample-tag {
-  font-size: .75rem;
-  font-size: .72rem;
-  font-style: normal;
-  font-weight: 500;
-  background: var(--blue-tint);
-  color: var(--blue-dark);
-  padding: .2rem .6rem;
-  border-radius: 999px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  background: #e8f4fd;
-  color: #0284c7;
-  padding: .2rem .55rem;
-  border-radius: 4px;
 }
 
 .job-tags {
@@ -2070,6 +2052,237 @@ p {
   display: block;
 }
 
+/* Stepper UI */
+.step-summary-box {
+  margin-top: 2rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--blue);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.step-summary-box strong {
+  display: block;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--blue-dark);
+  margin-bottom: .25rem;
+}
+
+.step-summary-box p {
+  margin: 0;
+  font-size: .95rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.stepper-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.25rem;
+}
+
+.stepper-progress-track {
+  width: 100%;
+  height: 4px;
+  background: #e5e5ea;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.stepper-progress-bar {
+  height: 100%;
+  background: var(--blue);
+  transition: width .35s ease;
+  border-radius: 999px;
+}
+
+.stepper-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .75rem;
+}
+
+.step-tab {
+  background: none;
+  border: none;
+  padding: .5rem .25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  text-align: left;
+  cursor: default;
+  transition: opacity .2s;
+}
+
+.step-tab.done {
+  cursor: pointer;
+}
+
+.step-tab.done:hover .step-label {
+  color: var(--blue-dark);
+}
+
+.step-tab .step-num {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: .05em;
+}
+
+.step-tab.active .step-num,
+.step-tab.done .step-num {
+  color: var(--blue-dark);
+}
+
+.step-tab .step-label {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.step-tab.active .step-label {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.step-tab.done .step-label {
+  color: var(--ink);
+}
+
+/* File Upload Previews & Remove buttons */
+.file-remove-btn {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: .3rem 0 0;
+  display: inline-block;
+  text-align: left;
+  transition: color .2s;
+}
+
+.file-remove-btn:hover {
+  color: #b91c1c;
+  text-decoration: underline;
+}
+
+.photo-preview-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.photo-thumb {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--blue);
+  flex-shrink: 0;
+}
+
+/* Field errors */
+.field-error {
+  display: block;
+  font-size: .8rem;
+  color: #dc2626;
+  font-weight: 500;
+  margin-top: .25rem;
+}
+
+/* Red error field styling requested by user */
+.field input.has-error,
+.field select.has-error,
+.field textarea.has-error,
+.form-grid input.has-error,
+.form-grid select.has-error,
+.form-grid textarea.has-error,
+.file-drop.has-error {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2 !important;
+  box-shadow: 0 0 0 1.5px #dc2626 !important;
+}
+
+.field input.has-error:focus,
+.field select.has-error:focus,
+.field textarea.has-error:focus,
+.form-grid input.has-error:focus,
+.form-grid select.has-error:focus,
+.form-grid textarea.has-error:focus,
+.file-drop.has-error:focus {
+  border-color: #dc2626 !important;
+  outline: 3px solid rgba(220, 38, 38, 0.25) !important;
+}
+
+.field input.has-error::placeholder,
+.field textarea.has-error::placeholder {
+  color: #f87171;
+}
+
+/* Stepper Navigation Actions */
+.stepper-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+/* Form Submission Success Card */
+.form-success-card {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--blue-tint);
+  color: var(--blue-dark);
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .5rem;
+}
+
+.form-success-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.form-success-card p {
+  font-size: 1.05rem;
+  color: var(--ink);
+  max-width: 500px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.form-success-card .subtext {
+  font-size: .95rem;
+  color: var(--muted);
+}
+
 /* Responsive for About & Careers */
 @media (max-width: 960px) {
   .team-grid {
@@ -2130,5 +2343,9 @@ p {
 
   .filters--compact {
     grid-template-columns: 1fr;
+  }
+
+  .stepper-steps {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
