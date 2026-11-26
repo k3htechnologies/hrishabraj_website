@@ -14,5 +14,5 @@ export const ROUTES = {
   PRIVACY: 'privacy',
   TERMS: 'terms',
   DISCLAIMER: 'disclaimer',
-
+  LOCATIONS: 'locations'
 };

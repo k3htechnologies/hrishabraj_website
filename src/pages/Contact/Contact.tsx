@@ -2,7 +2,8 @@ import { CONFIG } from "@/app/config/config";
 import { PROJECTS } from "@/shared/data/projects";
 import { useReveal } from "@/shared/hooks/useReveal";
 import { Link, useSearchParams } from "react-router-dom";
-import EnquiryForm from "../../shared/components/EnquiryForm";
+import EnquiryForm from "../../shared/components/EnquiryForm/EnquiryForm";
+import { ROUTES } from "@/app/router/paths";
 
 
 export default function Contact() {
@@ -15,7 +16,7 @@ export default function Contact() {
       <section className="page-hero">
         <div className="container">
           <nav className="crumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link> / Contact
+            <Link to={`/${ROUTES.HOMEPAGE}`}>Home</Link> / Contact
           </nav>
           <span className="eyebrow reveal">Get in touch</span>
           <h1 className="reveal">We would love to hear from you</h1>
@@ -63,7 +64,6 @@ export default function Contact() {
             <h2 style={{ fontSize: "1.5rem" }}>Send an enquiry</h2>
             <EnquiryForm
               source="contact"
-              defaultSubject={project ? `Enquiry: ${project.name}` : ""}
               projectId={project?.id}
             />
           </div>

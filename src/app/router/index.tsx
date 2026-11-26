@@ -11,6 +11,9 @@ import ProjectDetail from "@/pages/ProjectDetail/ProjectDetail"
 import TermsAndCondition from "@/pages/TermsAndConditions/TermsAndConditions"
 import Privacy from "@/pages/Privacy/Privacy"
 import Disclaimer from "@/pages/Disclaimer/Disclaimer"
+import Locations from "@/pages/Locations/Locations"
+import NotFound from "@/pages/NotFound/NotFound"
+import Login from "@/pages/Login/Login"
 
 const MainRouter: React.FC = () => {
     return (
@@ -29,6 +32,9 @@ const MainRouter: React.FC = () => {
                 <Route path={ROUTES.TERMS} element={<TermsAndCondition />} />
                 <Route path={ROUTES.PRIVACY} element={<Privacy />} />
                 <Route path={ROUTES.DISCLAIMER} element={<Disclaimer />} />
+                <Route path={ROUTES.LOCATIONS} element={<Locations />} />
+                <Route path={ROUTES.LOGIN} element={<Login />} />
+                <Route path="*" element={<NotFound />} />
             </Route>
         </Routes>
     )

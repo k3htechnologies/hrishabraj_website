@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 /* =========================================================
    H. Rishabraj — theme v3 (Apple-inspired, blue + white)
    Change the variables below to restyle the whole site.
@@ -1001,7 +1003,7 @@ p {
   margin: 0;
   color: var(--blue);
   font-weight: 800;
-  font-size: 13.4vw;
+  font-size: 10.6vw;
   line-height: .82;
   letter-spacing: -0.055em;
   white-space: nowrap;
@@ -2348,4 +2350,419 @@ p {
   .stepper-steps {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+
+
+.async-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.async-dropdown__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* Match .field select exactly */
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--white);
+  text-align: left;
+  cursor: pointer;
+}
+
+.async-dropdown__trigger:focus-visible {
+  border-color: var(--blue);
+  outline: 3px solid var(--blue-tint);
+}
+
+.async-dropdown__trigger--error {
+  border-color: #A11A1A;
+}
+
+.async-dropdown__trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.async-dropdown__placeholder {
+  color: #999;
+}
+
+.async-dropdown__arrow {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  transform: rotate(45deg);
+  margin-top: -4px;
+  transition: transform 0.2s ease;
+}
+
+.async-dropdown__arrow--open {
+  transform: rotate(225deg);
+  margin-top: 4px;
+}
+
+.async-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--white);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.async-dropdown__search {
+  padding: 0.65rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.async-dropdown__search input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--white);
+  outline: none;
+}
+
+.async-dropdown__search input:focus {
+  border-color: var(--blue);
+  outline: 3px solid var(--blue-tint);
+}
+
+.async-dropdown__options {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.async-dropdown__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 0;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.async-dropdown__option:hover,
+.async-dropdown__option--active {
+  background: var(--blue-tint);
+}
+
+.async-dropdown__option-label {
+  display: block;
+}
+
+.async-dropdown__option-subtitle {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.async-dropdown__selected {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.async-dropdown__message {
+  padding: 1rem;
+  color: var(--ink);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+
+
+/* Login Component Styles */
+.login-section {
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.login-container {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.login-header {
+  margin-bottom: 2.5rem;
+}
+
+.login-main-title {
+  color: #0a2239;
+  font-size: 2.6rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.login-subtitle {
+  color: #6b7280;
+  margin-top: 0.75rem;
+  max-width: 42rem;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.login-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .login-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .login-tabs-list {
+    grid-column: span 4 / span 4;
+  }
+  .login-content-card {
+    grid-column: span 8 / span 8;
+  }
+}
+
+.login-tabs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.login-tab-btn {
+  width: 100%;
+  text-align: left;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-tab-btn:hover {
+  border-color: rgba(49, 156, 216, 0.5);
+  background-color: rgba(249, 250, 251, 0.7);
+}
+
+.login-tab-btn.active {
+  background-color: #319cd8;
+  border-color: #319cd8;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.login-tab-eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.375rem;
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+
+.login-tab-btn.active .login-tab-eyebrow {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.login-tab-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0a2239;
+  transition: color 0.3s ease;
+}
+
+.login-tab-btn.active .login-tab-title {
+  color: #ffffff;
+}
+
+.login-content-card {
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 340px;
+}
+
+@media (min-width: 640px) {
+  .login-content-card {
+    padding: 3rem;
+  }
+}
+
+/* Tab Switching Animation */
+@keyframes portalTabFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portal-tab-animate {
+  animation: portalTabFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.login-content-eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #319cd8;
+  margin-bottom: 0.75rem;
+}
+
+.login-content-title {
+  color: #0a2239;
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.login-content-desc {
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.75;
+  max-width: 36rem;
+  margin-bottom: 2rem;
+}
+
+.login-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #319cd8;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1rem 1.75rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.login-action-btn:hover {
+  background-color: #2687be;
+}
+
+.login-btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.login-action-btn:hover .login-btn-arrow {
+  transform: translateX(4px);
+}
+
+.coming-soon-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 1px solid #e5e7eb;
+  background-color: rgba(249, 250, 251, 0.8);
+  padding: 1rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .coming-soon-box {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.coming-soon-indicator-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.pulse-dot-outer {
+  position: absolute;
+  height: 0.625rem;
+  width: 0.625rem;
+  border-radius: 9999px;
+  background-color: #319cd8;
+  opacity: 0.75;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.pulse-dot-inner {
+  position: relative;
+  display: inline-block;
+  height: 0.625rem;
+  width: 0.625rem;
+  border-radius: 9999px;
+  background-color: #319cd8;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.coming-soon-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0a2239;
+}
+
+.coming-soon-divider {
+  display: none;
+  color: #d1d5db;
+}
+
+@media (min-width: 640px) {
+  .coming-soon-divider {
+    display: inline;
+  }
+}
+
+.coming-soon-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
 }

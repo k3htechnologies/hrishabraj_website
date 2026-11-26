@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { LOCATIONS, PROJECTS, type ProjectStatus } from "../../shared/data/projects";
 import { useReveal } from "../../shared/hooks/useReveal";
+import { ROUTES } from "@/app/router/paths";
 
 const STATUS_LABEL: Record<ProjectStatus, string> = {
   ongoing: "Ongoing",
@@ -42,7 +43,7 @@ export default function Projects() {
       <section className="page-hero">
         <div className="container">
           <nav className="crumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link> / Projects
+            <Link to={`/${ROUTES.HOMEPAGE}`}>Home</Link> / Projects
           </nav>
           <span className="eyebrow reveal">Our projects</span>
           <h1 className="reveal">Find your next home or office</h1>
@@ -109,12 +110,12 @@ export default function Projects() {
           <div className="grid">
             {list.length === 0 ? (
               <p className="empty">
-                No projects match these filters. Try clearing a filter or <Link to="/contact">contact our team</Link>.
+                No projects match these filters. Try clearing a filter or <Link to={`/${ROUTES.CONTACT}`}>contact our team</Link>.
               </p>
             ) : (
               list.map((p) => (
                 <article key={p.id} className="card reveal from-scale">
-                  <Link className="card-media" to={`/projects/${p.id}`} aria-label={`View ${p.name}`}>
+                  <Link className="card-media" to={`/${ROUTES.PROJECTS}/${p.id}`} aria-label={`View ${p.name}`}>
                     <img src={p.image} alt={`${p.name}, ${p.location}`} loading="lazy" width={800} height={600} />
                     <span className={`badge ${p.status === "ongoing" ? "" : "badge--muted"}`}>{STATUS_LABEL[p.status]}</span>
                   </Link>
@@ -123,10 +124,10 @@ export default function Projects() {
                       {p.location} · {p.bhk}
                     </div>
                     <h3>
-                      <Link to={`/projects/${p.id}`}>{p.name}</Link>
+                      <Link to={`/${ROUTES.PROJECTS}/${p.id}`}>{p.name}</Link>
                     </h3>
                     <p>{p.tagline}</p>
-                    <Link className="link-arrow" to={`/projects/${p.id}`}>
+                    <Link className="link-arrow" to={`/${ROUTES.PROJECTS}/${p.id}`}>
                       View project
                     </Link>
                   </div>

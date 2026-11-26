@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useReveal } from "../../shared/hooks/useReveal";
 import { LOCATIONS, PROJECTS } from "../../shared/data/projects";
+import { ROUTES } from "@/app/router/paths";
 
 const VALUES = [
   { title: "Proven delivery", text: "Our track record is built on projects completed and handed over to families." },
@@ -19,7 +20,7 @@ export default function Home() {
       <section className="wordmark-hero" aria-labelledby="hero-title">
         <div className="container">
           <h1 className="wordmark" id="hero-title" aria-label="Rishabraj">
-            {"RISHABRAJ".split("").map((c, i) => (
+            {"H.RISHABRAJ".split("").map((c, i) => (
               <span key={i} className="ch" aria-hidden="true" style={{ ["--i" as string]: i }}>
                 {c}
               </span>
@@ -27,7 +28,7 @@ export default function Home() {
           </h1>
           <div className="hero-meta">
             <p>Homes and commercial spaces, built to last in Mumbai's established neighbourhoods.</p>
-            <Link className="link-arrow" to="/projects">
+            <Link className="link-arrow" to={`/${ROUTES.PROJECTS}`}>
               Explore projects
             </Link>
           </div>
@@ -58,7 +59,7 @@ export default function Home() {
             <h2 id="work-title" className="reveal" style={{ margin: 0 }}>
               Selected projects
             </h2>
-            <Link className="link-arrow" to="/projects">
+            <Link className="link-arrow" to={`/${ROUTES.PROJECTS}`}>
               All projects
             </Link>
           </div>
@@ -67,7 +68,7 @@ export default function Home() {
               <Link
                 key={p.id}
                 className="work-item reveal from-scale"
-                to={`/projects/${p.id}`}
+                to={`/${ROUTES.PROJECTS}/${p.id}`}
                 style={{ ["--d" as string]: `${i * 120}ms` }}
                 aria-label={`View ${p.name}`}
               >

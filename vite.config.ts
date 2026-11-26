@@ -1,28 +1,28 @@
-import react from '@vitejs/plugin-react'
-import path from 'path'
-import { defineConfig } from 'vite'
 
-// https://vite.dev/config/
+import react from '@vitejs/plugin-react'
+import path from 'node:path'
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite';
+
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 5000,
-    host: true,
-  },
+  plugins: [react(), tailwindcss()],
+
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(import.meta.dirname, './src'),
     },
   },
+
+  server: {
+    port: 5000,
+    open: true,
+    host: true,
+  },
+
   build: {
-    sourcemap: false, // ❌ Hides TSX, JSX, source files in production
-    minify: 'esbuild', // Faster & smaller bundle
-    outDir: 'dist', // Output folder
-    assetsDir: 'assets', // Assets folder
-    rollupOptions: {
-      output: {
-        manualChunks: undefined, // Keep bundle optimized
-      },
-    },
+    sourcemap: false,
+    minify: 'oxc',
+    outDir: 'dist',
+    assetsDir: 'assets',
   },
 })

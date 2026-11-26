@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useReveal } from "../../shared/hooks/useReveal";
+import { ROUTES } from "@/app/router/paths";
 
 interface StatItem {
   value: string;
@@ -130,7 +131,7 @@ export default function About() {
       <section className="page-hero">
         <div className="container">
           <nav className="crumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link> / About
+            <Link to={`/${ROUTES.HOMEPAGE}`}>Home</Link> / About
           </nav>
           <span className="eyebrow reveal" style={{ ["--d" as string]: "0ms" }}>
             About H. Rishabraj
@@ -139,7 +140,7 @@ export default function About() {
             className="reveal"
             style={{
               ["--d" as string]: "120ms",
-              maxWidth: "18ch",
+              maxWidth: "21ch",
               marginInline: "auto",
             }}
           >
@@ -151,7 +152,7 @@ export default function About() {
             className="lead reveal"
             style={{
               ["--d" as string]: "240ms",
-              maxWidth: "46ch",
+              maxWidth: "40ch",
               marginInline: "auto",
             }}
           >
@@ -289,12 +290,12 @@ export default function About() {
               </p>
             </div>
             <div className="contact-actions">
-              <Link className="btn" to="/projects">
+              <Link className="btn" to={`/${ROUTES.PROJECTS}`}>
                 View projects
               </Link>
               <Link
                 className="btn btn--outline"
-                to="/careers"
+                to={`/${ROUTES.CAREER}`}
                 style={{ background: "#fff", color: "var(--blue-dark)", boxShadow: "none" }}
               >
                 Careers

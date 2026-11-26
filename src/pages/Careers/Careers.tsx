@@ -1,82 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+
 import { useReveal } from "../../shared/hooks/useReveal";
-import { apiClient } from "@/app/http/api-client";
 import { createFormData } from "@/shared/utils/createFormData";
-import { createQueryParams } from "@/shared/utils/createQueryParams";
-
-interface JobOpening {
-  JobOpeningMasterId: number;
-  UniqueKey: string;
-  DepartmentMasterId?: number;
-  DepartmentName: string;
-  JobRoleMasterId?: number;
-  JobRoleName: string;
-  JobDescription: string;
-  JobResponsibilities?: string;
-  JobRequirement?: string;
-  JobQualification?: string;
-  JobSkills?: string;
-  WorkMode?: string;
-  ExperienceYears: string;
-  ExperienceMonths?: number;
-  NumberOfOpenings?: number;
-  WorkLocation: string;
-  EmploymentType: string;
-  IsActive?: boolean;
-  JobRoleStatus?: boolean;
-}
-
-interface Step {
-  stepNo: string;
-  title: string;
-  description: string;
-  delay: number;
-}
-
-const HOW_WE_HIRE_STEPS: Step[] = [
-  { stepNo: "01", title: "Apply", description: "Choose a role and send your resume and details.", delay: 0 },
-  { stepNo: "02", title: "Screen", description: "We review your application and call you within 5 working days.", delay: 120 },
-  { stepNo: "03", title: "Interview", description: "A conversation with the team, and a short task where relevant.", delay: 240 },
-  { stepNo: "04", title: "Offer", description: "We confirm the role, terms and joining date in writing.", delay: 360 },
-];
-
-export interface FilterDropdownOption {
-  label: string;
-  value: string;
-}
-
-export const STEPS = [
-  'Basic Details',
-  'Education',
-  'Experience',
-  'Salary & Final',
-] as const;
-
-export const SALARY_RANGE_OPTIONS: FilterDropdownOption[] = [
-  { label: '₹0 - ₹3,00,000', value: '0-300000' },
-  { label: '₹3,00,000 - ₹6,00,000', value: '300000-600000' },
-  { label: '₹6,00,000 - ₹9,00,000', value: '600000-900000' },
-  { label: '₹9,00,000 - ₹12,00,000', value: '900000-1200000' },
-  { label: '₹12,00,000 - ₹18,00,000', value: '1200000-1800000' },
-  { label: '₹18,00,000 - ₹25,00,000', value: '1800000-2500000' },
-  { label: '₹25,00,000+', value: '2500000+' },
-];
-
-export const QUALIFICATION_RANGE_OPTIONS: FilterDropdownOption[] = [
-  { label: '10th Pass', value: '10th pass' },
-  { label: '12th Pass', value: '12th pass' },
-  { label: 'Diploma', value: 'diploma' },
-  { label: 'Graduate', value: 'graduate' },
-  { label: 'Post Graduate', value: 'post graduate' },
-  { label: 'PhD', value: 'phd' },
-  { label: 'Other', value: 'other' },
-];
-
-export const EMPTY_OPTION: FilterDropdownOption = { label: '', value: '' };
-
-export const getOptionByValue = (OPTIONS: FilterDropdownOption[], value: string) =>
-  OPTIONS.find((opt) => opt.value === value) ?? EMPTY_OPTION;
+import { ROUTES } from "@/app/router/paths";
+import type { ApplicationFormState } from "./types/careers.type";
+import type { JobOpening } from "./api/careersresponse";
+import { HOW_WE_HIRE_STEPS, QUALIFICATION_RANGE_OPTIONS, SALARY_RANGE_OPTIONS, STEPS } from "./constants/careers.constant";
+import { ApplicationFormService } from "./service/careers.service";
 
 export default function Careers() {
   const [openings, setOpenings] = useState<JobOpening[]>([]);
@@ -90,7 +21,7 @@ export default function Careers() {
   const [apiError, setApiError] = useState("");
 
   // Form states matching reference fields
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ApplicationFormState>({
     position: "",
     referredBy: "",
     fullName: "",
@@ -128,13 +59,12 @@ export default function Careers() {
     async function loadJobListing() {
       try {
         setIsLoadingJobs(true);
-        const query = createQueryParams({
+
+        const response = await ApplicationFormService.apiCallFetchJobListing({
           pageNumber: 1,
           pageSize: 50,
-        }).toString();
-
-        const res = await apiClient.get<any>(`/Career/JobOpenings?${query}`);
-        const data = res?.Data;
+        });
+        const data = response?.Data;
 
         if (isMounted && Array.isArray(data)) {
           setOpenings(data);
@@ -464,10 +394,12 @@ export default function Careers() {
         NoticePeriod: formData.noticePeriod,
       });
 
-      const response = await apiClient.post<any>("/Career/ApplyJob", request);
-
+      const response =
+        await ApplicationFormService.apiCallApplicationSubmit(request);
       if (response && response.IsSuccess) {
         setSubmitSuccess(true);
+        handleReset();
+        setCurrentStep(0)
       } else {
         const errorMsg =
           response?.ErrorMessage && response.ErrorMessage.length > 0
@@ -521,7 +453,7 @@ export default function Careers() {
       <section className="page-hero">
         <div className="container">
           <nav className="crumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link> / Careers
+            <Link to={`/${ROUTES.HOMEPAGE}`}>Home</Link> / Careers
           </nav>
           <span className="eyebrow reveal" style={{ ["--d" as string]: "0ms" }}>
             Careers

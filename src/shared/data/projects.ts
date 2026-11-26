@@ -30,7 +30,7 @@ export const PROJECTS: Project[] = [
         description:
             "Luxury residences in Borivali East with thoughtfully planned amenities and a well-connected address. Replace this text with the official project description.",
         amenities: ["Infinity pool", "Recreation zones", "Community spaces", "Wellness areas"],
-        image: "/assets/img/placeholder.svg",
+        image: "/assets/projects/forest-front.jpg",
         rera: "To be added (MahaRERA number)",
         featured: true,
     },
@@ -50,8 +50,8 @@ export const PROJECTS: Project[] = [
         featured: true,
     },
     {
-        id: "juhu-residences",
-        name: "Juhu Residences",
+        id: "trident-juhu",
+        name: "Trident- Juhu",
         status: "upcoming",
         location: "Juhu",
         typology: "Residential",
@@ -60,7 +60,7 @@ export const PROJECTS: Project[] = [
         tagline: "3 & 4 BHK homes in Juhu",
         description: "SAMPLE: replace with official project description.",
         amenities: [],
-        image: "/assets/img/placeholder.svg",
+        image: "/assets/projects/trident-juhu.jpg",
         rera: "To be added (MahaRERA number)",
         featured: true,
     },

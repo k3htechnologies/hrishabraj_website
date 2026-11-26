@@ -1,5 +1,6 @@
 import { CONFIG } from "@/app/config/config";
-import EnquiryForm from "@/shared/components/EnquiryForm";
+import { ROUTES } from "@/app/router/paths";
+import EnquiryForm from "@/shared/components/EnquiryForm/EnquiryForm";
 import { PROJECTS } from "@/shared/data/projects";
 import { useReveal } from "@/shared/hooks/useReveal";
 import { type FormEvent, useState } from "react";
@@ -20,7 +21,7 @@ export default function ProjectDetail() {
         <div className="container empty">
           <h1>Project not found</h1>
           <p>
-            <Link className="btn" to="/projects">
+            <Link className="btn" to={`/${ROUTES.PROJECTS}`}>
               Back to all projects
             </Link>
           </p>
@@ -33,7 +34,7 @@ export default function ProjectDetail() {
     <section className="section" style={{ paddingTop: "2rem" }}>
       <div className="container">
         <nav className="crumbs" aria-label="Breadcrumb">
-          <Link to="/">Home</Link> / <Link to="/projects">Projects</Link> / {project.name}
+          <Link to={`/${ROUTES.HOMEPAGE}`}>Home</Link> / <Link to={`/${ROUTES.PROJECTS}`}>Projects</Link> / {project.name}
         </nav>
 
         <div className="detail">
@@ -93,36 +94,22 @@ export default function ProjectDetail() {
 
         <div id="enquire" className="reveal" style={{ maxWidth: 760, marginTop: "4rem" }}>
           <h2>Enquire about {project.name}</h2>
-          <EnquiryForm source="project-enquiry" projectId={project.id} defaultSubject={`Enquiry: ${project.name}`} />
+          <EnquiryForm source="project-enquiry" projectId={project.id} />
         </div>
       </div>
     </section>
   );
 }
 
-/**
- * Brochure download. The lead is captured first, then the PDF opens.
- * This is the "lead before download" pattern requested for the site.
- */
-function BrochureButton({ projectId, projectName, brochure }: { projectId: string; projectName: string; brochure: string }) {
+function BrochureButton({ brochure }: { projectId: string; projectName: string; brochure: string }) {
   const [open, setOpen] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
     setError("");
     try {
-    //   await submitLead({
-    //     name: String(fd.get("name") ?? "").trim(),
-    //     email: String(fd.get("email") ?? "").trim(),
-    //     phone: String(fd.get("phone") ?? "").trim(),
-    //     message: `Brochure requested: ${projectName}`,
-    //     source: "brochure",
-    //     projectId,
-    //     subject: `Brochure: ${projectName}`,
-    //   });
       setDone(true);
       window.open(brochure, "_blank", "noopener");
     } catch {

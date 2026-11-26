@@ -2,6 +2,7 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useReveal } from "../shared/hooks/useReveal";
+import { ROUTES } from "@/app/router/paths";
 
 const Header: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -47,15 +48,23 @@ const Header: React.FC = () => {
     return (
         <header className={`site-header${scrolled ? " scrolled" : ""}`}>
             <div className="container header-inner">
-                <Link className="brand brand-word" to="/home" aria-label="H. Rishabraj home">
-                    H.RISHABRAJ
+                <Link className="brand brand-word" to={`/${ROUTES.HOMEPAGE}`} aria-label="H. Rishabraj home">
+                    <img
+                        src={"/Hrishabraj-logo-dark.svg"}
+                        alt="H. Rishabraj"
+                    />
                 </Link>
                 <nav className={`nav${menuOpen ? " open" : ""}`} id="site-nav" aria-label="Primary">
-                    <NavLink to="/projects">Projects</NavLink>
-                    <NavLink to="/about">About</NavLink>
-                    <NavLink to="/careers">Careers</NavLink>
-                    <NavLink to="/contact">Contact</NavLink>
-                    <Link className="btn btn--small" to="/contact">
+                    <NavLink to={`/${ROUTES.PROJECTS}`}>Projects</NavLink>
+                    <NavLink to={`/${ROUTES.ABOUT}`}>About</NavLink>
+                    <NavLink to={`/${ROUTES.CAREER}`}>Careers</NavLink>
+                    <NavLink to={`/${ROUTES.CONTACT}`}>Contact</NavLink>
+                    <Link className="btn btn--small" to={`/${ROUTES.CONTACT}`}
+                    style={{
+                        paddingTop : '5px',
+                        paddingBottom : '5px'
+                    }}
+                    >
                         Enquire
                     </Link>
                 </nav>
